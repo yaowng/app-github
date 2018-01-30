@@ -1,11 +1,23 @@
 <div>
-  <form action="">
-    <input type="text" name="user" id="username">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <input name="username" ngModel required #username="ngModel">
     <input type="submit" value="Search">
   </form>
-  <ul>
-    <li *ngFor="let user of users">
-      <div>{{user.name}}</div>
-    </li>
-  </ul>
+  <br>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let user of gitUsers">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top" width="75" src="{{user.avatar_url}}">
+        <div class="card-body">
+          <p class="card-text">{{user.login}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            </div>
+            <small class="text-muted">9 mins</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
